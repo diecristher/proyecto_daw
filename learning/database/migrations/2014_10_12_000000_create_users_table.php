@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->comment('Nombre del rol de usuario');
             $table->text('description');
             $table->timestamps();
         });
@@ -28,8 +28,40 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('picture')->nullable();
+
+
+            //cashier columns
+            $table->string('stripe_id')->nullable();
+            $table->string('card_brand')->nullable();
+            $table->string('card_last_four')->nullable();
+            $table->timestamp('trial_ends_at')->nullable();
+
+
             $table->rememberToken();
             $table->timestamps();
+        });
+
+    Schema::create('subscriptions', function (Blueprint $table) {
+        $table->increments('id');
+        $table->integer('user_id')->references('id')->on('users');
+        $table->string('name');
+        $table->string('stripe_id');
+        $table->string('stripe_plan');
+        $table->string('quantity');
+        $table->timestamp('trial_ends_at')->nullable();
+        $table->string('ends_at')->nullable();
+        $table->timestamps();
+
+        });
+
+Schema::create('usar_social_accounts', function (Blueprint $table) {
+    $table->increments('id');
+    $table->unsignedInteger('user_id');
+    $table->foreign('user_id')->references('id')->on('users');
+    $table->string('provider');
+    $table->string('provider_uid');
+
         });
     }
 
@@ -42,5 +74,7 @@ class CreateUsersTable extends Migration
     {
         Schema::dropIfExists('users');
         Schema::dropIfExists('roles');
+        Schema::dropIfExists('subscriptions');
+        Schema::dropIfExists('user_social_accounts');
     }
 }
