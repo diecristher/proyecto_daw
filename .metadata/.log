@@ -2277,7 +2277,14 @@ org.eclipse.core.internal.resources.ResourceException: Resource '/learning/vendo
 !SUBENTRY 1 org.eclipse.core.resources 4 368 2019-01-03 14:11:40.120
 !MESSAGE Resource '/learning/vendor/composer/908b23a3/maximebf-php-debugbar-30e7d60/src/DebugBar/Bridge/CacheCacheCollector.php' does not exist.
 
+<<<<<<< HEAD
 !ENTRY org.eclipse.e4.ui.workbench 4 0 2019-01-04 14:15:33.858
+=======
+!ENTRY org.eclipse.ui.monitoring 2 0 2019-01-04 03:43:24.578
+!MESSAGE UI freeze of 4,4s at 03:42:37.390
+
+!ENTRY org.eclipse.e4.ui.workbench 4 0 2019-01-04 04:21:25.031
+>>>>>>> b3c2e4d08351c34127efe9ed91a6baea370c0816
 !MESSAGE Error disposing widget for : org.eclipse.e4.ui.model.application.ui.menu.impl.MenuImpl null
 !STACK 0
 org.eclipse.swt.SWTException: Graphic is disposed
