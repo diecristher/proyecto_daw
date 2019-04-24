@@ -15,24 +15,18 @@ class CreateUsersTable extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->increments('id');
-<<<<<<< HEAD
             $table->string('name')->comment('Nombre del rol de usuario');
-=======
-            $table->string('name');
->>>>>>> b3c2e4d08351c34127efe9ed91a6baea370c0816
             $table->text('description');
             $table->timestamps();
         });
-        
+
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('role_id')->default(\App\Role::STUDENT);
             $table->foreign('role_id')->references('id')->on('roles');
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-<<<<<<< HEAD
             $table->string('picture')->nullable();
 
 
@@ -66,13 +60,9 @@ Schema::create('usar_social_accounts', function (Blueprint $table) {
     $table->foreign('user_id')->references('id')->on('users');
     $table->string('provider');
     $table->string('provider_uid');
-
+    $table->rememberToken();
+    $table->timestamps();
         });
-=======
-            $table->rememberToken();
-            $table->timestamps();
-        });
->>>>>>> b3c2e4d08351c34127efe9ed91a6baea370c0816
     }
 
     /**
@@ -84,10 +74,7 @@ Schema::create('usar_social_accounts', function (Blueprint $table) {
     {
         Schema::dropIfExists('users');
         Schema::dropIfExists('roles');
-<<<<<<< HEAD
         Schema::dropIfExists('subscriptions');
         Schema::dropIfExists('user_social_accounts');
-=======
->>>>>>> b3c2e4d08351c34127efe9ed91a6baea370c0816
     }
 }
