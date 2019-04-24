@@ -21,8 +21,16 @@ class CreateCoursesTable extends Migration
             $table->foreign('category_id')->references('id')->on('categories');
             $table->unsignedInteger('level_id');
             $table->foreign('level_id')->references('id')->on('levels');
-            $table->increments('id');
+            $table->string('name');
+            $table->text('description');
+            $table->string('slug');
+            $table->string('picture')->nullable();
+            $table->enum('status', [
+                \App\Course::PUBLISHED, \App\Course::PENDING, \App\Course::REJECTED])->default(\App\Course::PENDING);
+            $table->boolean('previous_approved')->default(false);
+            $table->boolean('previous_rejected')->default(false);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
