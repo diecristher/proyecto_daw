@@ -17,7 +17,7 @@ class InvoiceController extends Controller
 
     public function download ($id) {
     	return request()->user()->downloadInvoice($id, [
-    		"vendor" => "Mi empresa",
+    		"vendor" => "Cursame!",
 		    "product" => __("Suscripción")
 	    ]);
     }
