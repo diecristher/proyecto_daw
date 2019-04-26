@@ -22,6 +22,10 @@
     <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
 </head>
 <body>
+    @include('partials.navigation')
+
+    @yield('jumbotron')
+
     <div id="app">
         @include('partials.navigation')
         <main class="py-4">
